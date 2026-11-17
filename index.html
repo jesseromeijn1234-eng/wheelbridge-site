@@ -18,6 +18,39 @@
     .faq{display:grid;gap:10px}.faq details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px 18px}.faq summary{cursor:pointer;font-weight:700}.faq p{color:var(--muted);margin:10px 0 0;font-size:14px}
     footer{margin-top:55px;border-top:1px solid #ffffff12;padding:26px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:700px){.navlinks{gap:14px}.navlinks a{font-size:12px}.hero{padding:65px 0 48px}.selectors,.cards{grid-template-columns:1fr}.panel{padding:18px}.guide-top{align-items:flex-start;flex-direction:column}}
+
+    /* Layout refinements */
+    .nav{position:sticky;top:0;z-index:20;background:#0b0d12eF;backdrop-filter:blur(16px);padding:0 2px}
+    .navlinks{align-items:center;flex-wrap:wrap}
+    .navlinks a{padding:8px 0}
+    .hero{max-width:900px}
+    .section{scroll-margin-top:92px;padding:66px 0}
+    .section-head{max-width:760px}
+    .panel{padding:28px}
+    .cards{align-items:stretch}
+    .mini{min-height:168px}
+    .download-panel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:18px;align-items:start}
+    .download-panel .status{grid-column:1/-1}
+    .download-panel .actions{margin:0;align-items:flex-start}
+    .download-panel .note,.download-panel .callout{margin:0}
+    .download-panel .download-details{display:grid;gap:12px}
+    .download-panel .download-actions{display:grid;gap:10px}
+    .download-panel .download-actions .btn{width:100%}
+    .security-note{border:1px solid #354057;background:#111824;color:#c7d0e0;border-radius:13px;padding:14px 16px;font-size:13px;line-height:1.55}
+    .security-note strong{color:#f4f6fb}
+    footer{padding-bottom:34px}
+    @media(max-width:700px){
+      .nav{height:auto;min-height:68px;align-items:flex-start;flex-direction:column;justify-content:center;gap:5px;padding:12px 0}
+      .navlinks{width:100%;gap:18px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+      .navlinks a{white-space:nowrap}
+      .section{padding:48px 0}
+      .download-panel{grid-template-columns:1fr;padding:18px}
+      .download-panel .status{grid-column:auto}
+      .download-panel .actions{display:grid}
+      .download-panel .actions .btn{width:100%}
+      .mini{min-height:0}
+    }
+
   </style>
 </head>
 <body>
@@ -57,14 +90,19 @@
     </section>
     <section class="wrap section" id="download">
       <div class="section-head"><div class="kicker">Early access</div><h2>Try the Windows preview</h2><p class="sub">The first Windows setup package has been built. It installs the WheelBridge interface preview on your PC.</p></div>
-      <div class="panel">
+      <div class="panel download-panel">
         <div class="status"><span class="dot"></span><div><strong>Development build available · Version 0.1.0</strong><p>This is an early preview, not a working racing-wheel bridge. Physical wheel input, virtual controller support, force feedback and Roblox connection are not implemented yet.</p></div></div>
-        <div class="actions" style="justify-content:flex-start">
-          <a class="btn primary" href="https://github.com/jesseromeijn1234-eng/wheelbridge-site/releases/latest/download/WheelBridge-Setup-0.1.0-x64.exe" download="WheelBridge-Setup-0.1.0-x64.exe">Download Windows setup</a>
-          <a class="btn" href="https://github.com/jesseromeijn1234-eng/wheelbridge-site" target="_blank" rel="noopener">View source on GitHub</a>
+        <div class="download-actions">
+          <div class="actions" style="justify-content:flex-start">
+            <a class="btn primary" href="https://github.com/jesseromeijn1234-eng/wheelbridge-site/releases/latest/download/WheelBridge-Setup-0.1.0-x64.exe" download="WheelBridge-Setup-0.1.0-x64.exe">Download Windows setup</a>
+            <a class="btn" href="https://github.com/jesseromeijn1234-eng/wheelbridge-site/releases" target="_blank" rel="noopener">All releases</a>
+          </div>
+          <p class="note">The button downloads the .exe installer directly. Open it and follow the setup wizard — no ZIP or extra download page.</p>
         </div>
-        <p class="note">Click the download button to download the Windows installer (.exe) directly. When it finishes, open the downloaded file and follow the setup wizard. No Actions page or ZIP file is needed.</p>
-        <div class="callout">Only download from this official GitHub repository. The installer includes the .NET runtime and does not install Logitech G HUB, MOZA Pit House, Thrustmaster or Fanatec software.</div>
+        <div class="download-details">
+          <div class="callout">Only download from this official website or its GitHub releases. The installer includes the .NET runtime, but not Logitech G HUB, MOZA Pit House, Thrustmaster or Fanatec software.</div>
+          <div class="security-note"><strong>About the Windows security warning</strong><br>Windows may show “Microsoft Defender SmartScreen prevented an unrecognized app” because this preview is not digitally signed yet. That warning is about the publisher reputation/signature, not proof that the file is malicious. Only use the installer linked here. We’ll work toward proper code signing when the project is ready.</div>
+        </div>
       </div>
     </section>
     <section class="wrap section" id="faq">
