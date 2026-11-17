@@ -1,0 +1,14 @@
+# .NET / Visual Studio
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Generated installer build files
+/installer/publish/
+/installer/output/
+
+# Temporary files
+*.tmp
+*.log

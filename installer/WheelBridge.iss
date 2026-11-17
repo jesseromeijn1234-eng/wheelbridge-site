@@ -13,7 +13,7 @@ DefaultGroupName=WheelBridge
 UninstallDisplayIcon={app}\{#MyAppExeName}
 OutputDir=output
 OutputBaseFilename=WheelBridge-Setup-{#MyAppVersion}-x64
-ArchitecturesAllowed=x64compatible
+ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 PrivilegesRequired=admin
 WizardStyle=classic
@@ -33,11 +33,11 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Additional shortcuts:"; Flags: unchecked
 
 [Files]
-Source: "publish\\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
-Name: "{group}\\WheelBridge"; Filename: "{app}\\{#MyAppExeName}"
-Name: "{autodesktop}\\WheelBridge"; Filename: "{app}\\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{group}\WheelBridge"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autodesktop}\WheelBridge"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\\{#MyAppExeName}"; Description: "Launch WheelBridge"; Flags: postinstall nowait skipifsilent
+Filename: "{app}\{#MyAppExeName}"; Description: "Launch WheelBridge"; Flags: postinstall nowait skipifsilent

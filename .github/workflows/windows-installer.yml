@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   build-installer:
+    name: Build Windows setup EXE
     runs-on: windows-latest
     steps:
       - name: Check out source
@@ -25,7 +26,18 @@ jobs:
 
       - name: Publish self-contained Windows app
         shell: pwsh
-        run: dotnet publish src/WheelBridge.App/WheelBridge.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false --output installer/publish
+        run: |
+          dotnet --info
+          dotnet publish src/WheelBridge.App/WheelBridge.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false --output installer/publish
+          if ($LASTEXITCODE -ne 0) { throw "dotnet publish failed with exit code $LASTEXITCODE" }
+
+      - name: Verify published application
+        shell: pwsh
+        run: |
+          if (!(Test-Path "installer/publish/WheelBridge.App.exe")) {
+            Get-ChildItem "installer/publish" -ErrorAction SilentlyContinue
+            throw "WheelBridge.App.exe was not created by dotnet publish."
+          }
 
       - name: Install Inno Setup
         shell: pwsh
@@ -33,12 +45,26 @@ jobs:
 
       - name: Build classic Setup Wizard
         shell: pwsh
-        run: '& "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" installer/WheelBridge.iss'
+        run: |
+          Push-Location installer
+          try {
+            & "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" "WheelBridge.iss"
+            if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed with exit code $LASTEXITCODE" }
+          }
+          finally {
+            Pop-Location
+          }
+
+      - name: Verify setup EXE
+        shell: pwsh
+        run: |
+          $setup = "installer/output/WheelBridge-Setup-0.1.0-x64.exe"
+          if (!(Test-Path $setup)) { throw "Setup EXE was not created: $setup" }
 
       - name: Upload installer
         uses: actions/upload-artifact@v4
         with:
           name: WheelBridge-Windows-Setup
-          path: installer/output/WheelBridge-Setup-*-x64.exe
+          path: installer/output/WheelBridge-Setup-0.1.0-x64.exe
           if-no-files-found: error
           retention-days: 30
