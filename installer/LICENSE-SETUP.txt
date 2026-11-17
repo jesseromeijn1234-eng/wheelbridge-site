@@ -1,0 +1,20 @@
+WHEELBRIDGE — EARLY DEVELOPMENT SOFTWARE NOTICE
+
+Please read this notice before installing.
+
+1. DEVELOPMENT SOFTWARE
+This is an early development build of WheelBridge. Features may be incomplete, change without notice, or contain bugs. It is not a finished product.
+
+2. NO GUARANTEE
+The software is provided "as is", without warranties of any kind, to the extent permitted by applicable law. The developers are not responsible for data loss or damage caused by use of this early build, except where liability cannot legally be excluded.
+
+3. DEVICE AND GAME COMPATIBILITY
+Compatibility with racing wheels, drivers, virtual controllers, Roblox experiences and other software is not guaranteed. Do not install unofficial drivers or disable Windows security protections to use this build.
+
+4. THIRD-PARTY SOFTWARE
+WheelBridge does not include Logitech, MOZA, Thrustmaster, Fanatec or other manufacturer software. Install manufacturer software only from the manufacturer's official website.
+
+5. PRIVACY
+This early build is designed to store its local profile on this PC. Do not enter passwords, API keys or other secrets into development builds.
+
+By choosing "I Agree", you confirm that you have read this notice and want to install this early development build.
