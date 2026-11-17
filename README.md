@@ -1,18 +1,27 @@
-# WheelBridge Website
+# WheelBridge
 
-The official website for the WheelBridge Windows app project.
+WheelBridge is an early-development Windows app project.
 
-## Status
-The website is an early information and setup-guide page. The WheelBridge app is still in development, so there are no downloads yet.
+## Windows installer
 
-## Publish with GitHub Pages
-1. Open the repository **Settings**.
-2. Select **Pages** in the sidebar.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select branch **main** and folder **/(root)**, then save.
-5. Wait for GitHub Pages to publish the site.
+The repository includes a classic Windows Setup Wizard built with Inno Setup.
 
-The website uses plain HTML, CSS and JavaScript. It has no build step and no API keys.
+To create the installer:
+1. Open the **Actions** tab.
+2. Select **Build WheelBridge Windows installer**.
+3. Click **Run workflow**.
+4. When the workflow finishes, open the run and download the **WheelBridge-Windows-Setup** artifact.
 
-## Important
-WheelBridge is an independent project and is not affiliated with Roblox or wheel manufacturers. Manufacturer software is not bundled with this website or app.
+The artifact contains the setup EXE. It is currently a development build, not a finished wheel-to-Roblox bridge.
+
+## What the installer does
+- Installs the app under Program Files.
+- Adds a WheelBridge entry to the Windows Start menu.
+- Offers an optional desktop shortcut.
+- Adds WheelBridge to Windows Installed Apps so it can be uninstalled normally.
+- Bundles the .NET runtime so users do not need to install the .NET SDK.
+
+## Current limitations
+The current app foundation provides a WPF interface, DirectInput device discovery, local profile settings and simulated input controls. Live wheel-axis reading, virtual controller output, Roblox integration and physical force feedback are not implemented yet.
+
+Manufacturer software is not bundled. Use official vendor downloads only.
