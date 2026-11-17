@@ -1,0 +1,44 @@
+name: Build WheelBridge Windows installer
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/WheelBridge.App/**"
+      - "installer/**"
+      - ".github/workflows/windows-installer.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-installer:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install .NET 10 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Publish self-contained Windows app
+        shell: pwsh
+        run: dotnet publish src/WheelBridge.App/WheelBridge.App.csproj --configuration Release --runtime win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false --output installer/publish
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup --yes --no-progress
+
+      - name: Build classic Setup Wizard
+        shell: pwsh
+        run: '& "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" installer/WheelBridge.iss'
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: WheelBridge-Windows-Setup
+          path: installer/output/WheelBridge-Setup-*-x64.exe
+          if-no-files-found: error
+          retention-days: 30
