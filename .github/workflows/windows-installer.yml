@@ -9,7 +9,7 @@ on:
       - ".github/workflows/windows-installer.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-installer:
@@ -68,10 +68,24 @@ jobs:
           $setup = "installer/output/WheelBridge-Setup-0.1.0-x64.exe"
           if (!(Test-Path $setup)) { throw "Setup EXE was not created: $setup" }
 
-      - name: Upload installer
+      - name: Upload installer build artifact
         uses: actions/upload-artifact@v4
         with:
           name: WheelBridge-Windows-Setup
           path: installer/output/WheelBridge-Setup-0.1.0-x64.exe
           if-no-files-found: error
           retention-days: 30
+
+      - name: Publish direct-download release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v0.1.0
+          name: WheelBridge 0.1.0
+          body: |
+            WheelBridge Windows preview 0.1.0.
+
+            This is an early interface preview. It does not yet read physical racing-wheel input, provide virtual controller support or force feedback, or connect to Roblox.
+          files: installer/output/WheelBridge-Setup-0.1.0-x64.exe
+          overwrite_files: true
+          fail_on_unmatched_files: true
+          make_latest: true
