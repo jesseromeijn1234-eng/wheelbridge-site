@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="WheelBridge helps connect supported racing wheels to Roblox racing games.">
+  <title>WheelBridge — Your wheel, in Roblox</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0b0d12;--panel:#131722;--panel2:#191f2c;--line:#293244;--text:#f4f6fb;--muted:#a3adbf;--blue:#7c9cff;--cyan:#65e0d0;--radius:20px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#1d2a4a 0,transparent 48%),var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:inherit}.wrap{width:min(1080px,calc(100% - 40px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{font-weight:800;letter-spacing:-.5px;font-size:20px}.brand span{color:var(--blue)}.navlinks{display:flex;gap:26px}.navlinks a{text-decoration:none;color:var(--muted);font-size:14px}.navlinks a:hover{color:white}
+    .hero{padding:88px 0 68px;text-align:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid #536da855;background:#19233a;padding:6px 12px;border-radius:99px;color:#c6d3ff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:50%;background:#f2c36b;box-shadow:0 0 12px #f2c36b}.hero h1{font-size:clamp(42px,7vw,72px);line-height:1.04;letter-spacing:-.055em;margin:22px 0 18px}.gradient{background:linear-gradient(100deg,#91aaff,#70e5d3);background-clip:text;color:transparent}.hero p{max-width:650px;margin:0 auto;color:var(--muted);font-size:18px}.actions{display:flex;justify-content:center;gap:12px;margin-top:30px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:12px;text-decoration:none;font-weight:700;border:1px solid var(--line);background:var(--panel2)}.btn.primary{background:#809cff;color:#09101f;border-color:#809cff}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+    .section{padding:54px 0}.section-head{margin-bottom:24px}.kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.section h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.04em;line-height:1.15;margin:8px 0}.sub{color:var(--muted);margin:0;max-width:680px}
+    .panel{background:linear-gradient(145deg,#171d2a,#11151e);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 20px 70px #0003}.selectors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}.field label{display:block;font-size:13px;font-weight:700;color:#c7d0e0;margin-bottom:8px}.field select{width:100%;background:#0c111b;color:var(--text);border:1px solid #354057;border-radius:11px;padding:13px 40px 13px 13px;font:inherit;outline:none}.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #7c9cff22}.guide{background:#0d131e;border:1px solid #273249;border-radius:15px;padding:22px}.guide-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.guide h3{margin:0;font-size:20px}.tag{font-size:11px;font-weight:800;color:#8fe8d8;background:#17312f;padding:5px 9px;border-radius:99px;white-space:nowrap}.guide ol{padding-left:22px;margin:12px 0;color:#d5dbea}.guide li{padding:5px 0 5px 5px}.guide li::marker{color:var(--cyan);font-weight:800}.note{color:var(--muted);font-size:13px;margin:14px 0 0}.callout{margin-top:15px;border-left:3px solid #e7bc69;padding:10px 13px;background:#292315;color:#f0dfb9;border-radius:0 9px 9px 0;font-size:13px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.mini{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}.mini .num{font-size:12px;color:var(--cyan);font-weight:800;letter-spacing:.1em}.mini h3{margin:8px 0 5px}.mini p{margin:0;color:var(--muted);font-size:14px}
+    .status{display:flex;align-items:center;gap:12px;padding:18px 20px;border:1px solid #66502a;background:#241e13;border-radius:15px}.status strong{display:block}.status p{margin:2px 0 0;color:#c9b995;font-size:14px}.status .dot{flex:none}
+    .faq{display:grid;gap:10px}.faq details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:15px 18px}.faq summary{cursor:pointer;font-weight:700}.faq p{color:var(--muted);margin:10px 0 0;font-size:14px}
+    footer{margin-top:55px;border-top:1px solid #ffffff12;padding:26px 0;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:700px){.navlinks{gap:14px}.navlinks a{font-size:12px}.hero{padding:65px 0 48px}.selectors,.cards{grid-template-columns:1fr}.panel{padding:18px}.guide-top{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav">
+    <a class="brand" href="#" aria-label="WheelBridge home" style="text-decoration:none">Wheel<span>Bridge</span></a>
+    <nav class="navlinks" aria-label="Main navigation"><a href="#setup">Setup guide</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+  </header>
+  <main>
+    <section class="wrap hero">
+      <div class="eyebrow"><span class="dot"></span> Windows app · In development</div>
+      <h1>Your racing wheel.<br><span class="gradient">Inside Roblox.</span></h1>
+      <p>WheelBridge is being built to connect supported racing wheels, pedals and shifters to Roblox racing games — with one simple setup.</p>
+      <div class="actions"><a class="btn primary" href="#setup">Set up my wheel</a><a class="btn" href="#how">How it works</a></div>
+    </section>
+    <section class="wrap section" id="setup">
+      <div class="section-head"><div class="kicker">Get ready</div><h2>Find your setup</h2><p class="sub">Choose your wheel brand and setup. We’ll show you the relevant preparation steps.</p></div>
+      <div class="panel">
+        <div class="selectors">
+          <div class="field"><label for="brand">Wheel manufacturer</label><select id="brand"><option value="logitech">Logitech</option><option value="moza">MOZA</option><option value="thrustmaster">Thrustmaster</option><option value="fanatec">Fanatec</option><option value="other">Another brand / not sure</option></select></div>
+          <div class="field"><label for="setupType">Your setup</label><select id="setupType"></select></div>
+        </div>
+        <div class="guide" aria-live="polite">
+          <div class="guide-top"><h3 id="guideTitle">Your Logitech setup</h3><span class="tag" id="guideTag">PREPARATION</span></div>
+          <ol id="steps"></ol>
+          <p class="note" id="guideNote"></p>
+          <div class="callout">WheelBridge is not ready to download yet. These steps help you prepare; they do not install WheelBridge.</div>
+        </div>
+      </div>
+    </section>
+    <section class="wrap section" id="how">
+      <div class="section-head"><div class="kicker">The idea</div><h2>Made to stay simple</h2><p class="sub">The goal is to make your existing racing setup work with supported Roblox racing experiences.</p></div>
+      <div class="cards">
+        <article class="mini"><div class="num">01 / CONNECT</div><h3>Use your own software</h3><p>Keep using the official software for your wheel. WheelBridge will not bundle manufacturer apps.</p></article>
+        <article class="mini"><div class="num">02 / CONFIGURE</div><h3>Set up your controls</h3><p>Prepare your wheel, pedals, buttons and shifter for a supported game.</p></article>
+        <article class="mini"><div class="num">03 / DRIVE</div><h3>Play with your wheel</h3><p>The planned app will handle the connection between your wheel and supported Roblox games.</p></article>
+      </div>
+    </section>
+    <section class="wrap section">
+      <div class="status"><span class="dot"></span><div><strong>WheelBridge is currently in development</strong><p>No installer is available yet. A download will appear here after the app has been built and tested.</p></div></div>
+    </section>
+    <section class="wrap section" id="faq">
+      <div class="section-head"><div class="kicker">Good to know</div><h2>Frequently asked questions</h2></div>
+      <div class="faq">
+        <details><summary>Do I need Logitech G HUB or other wheel software?</summary><p>Use the official software recommended for your wheel. WheelBridge will not include manufacturer software. The exact requirements will be confirmed after testing each supported device.</p></details>
+        <details><summary>Does WheelBridge support every racing wheel?</summary><p>Not yet confirmed. Compatibility will be listed only after each device has been tested.</p></details>
+        <details><summary>Will WheelBridge work with every Roblox game?</summary><p>No. A Roblox experience must add support for WheelBridge. Compatibility will be clearly listed for supported games.</p></details>
+        <details><summary>Will I need to pay?</summary><p>The plan is to make the WheelBridge app free to download. Any future costs or limitations will be explained clearly.</p></details>
+        <details><summary>Is the download available now?</summary><p>Not yet. The app is still being developed and tested. Please avoid unofficial downloads claiming to be WheelBridge.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><span>© 2026 WheelBridge. An independent community project.</span><span>Not affiliated with Roblox or wheel manufacturers.</span></footer>
+  <script>
+    const guides = {
+      logitech: {
+        label:"Logitech", options:[
+          ["basic","Wheel and pedals"],["shifter","Wheel, pedals and shifter"],["separate","Separate pedals"],["software","I don't have Logitech G HUB"],["unsure","I'm not sure"]
+        ], content:{
+          basic:["Connect the wheel directly to your PC and power it on.","Install or open Logitech G HUB if it is required for your model.","Check that Windows can see your wheel and pedals."],
+          shifter:["Connect the wheel and pedals, then connect the shifter to the correct port on your wheel.","Install or open Logitech G HUB if it is required for your model.","Check that steering, pedals and shifter are detected."],
+          separate:["Connect your pedals using the connection method provided by their manufacturer.","Install the pedals' required driver or software, if any.","Check that Windows can see both your wheel and pedals."],
+          software:["Find your exact Logitech wheel model.","Download G HUB only from Logitech's official website.","Install it, connect your wheel and check that the device is detected."],
+          unsure:["Look for the model name printed on your wheel or its packaging.","Check which pedals and accessories are connected.","Choose the closest setup above, or wait for the device-specific guide."]
+        }, note:"G HUB requirements can differ by model. Only download Logitech software from Logitech's official website."
+      },
+      moza:{
+        label:"MOZA",options:[["base","Wheel base and pedals"],["shifter","Wheel, pedals and shifter"],["pedals","Separate pedals"],["software","I don't have MOZA Pit House"],["unsure","I'm not sure"]],content:{
+          base:["Connect your MOZA wheel base and pedals according to the product manual.","Install MOZA Pit House from the official MOZA website.","Check that the base, steering and pedals are detected."],
+          shifter:["Connect the wheel base, pedals and shifter using the correct ports.","Install MOZA Pit House from the official MOZA website.","Check that each connected device is detected."],
+          pedals:["Connect the pedals using the method supported by your model.","Install any required official driver or software.","Check that Windows detects the pedals."],
+          software:["Find your exact MOZA model.","Download MOZA Pit House from the official MOZA website.","Install it and check that your wheel base is detected."],
+          unsure:["Find the model name of your wheel base.","Check which pedals and accessories you have.","Use the product manual to confirm the correct connections."]
+        },note:"Use the official MOZA support site for software and device-specific instructions."
+      },
+      thrustmaster:{
+        label:"Thrustmaster",options:[["wheel","Wheel and pedals"],["shifter","Wheel, pedals and shifter"],["pedals","Separate pedals"],["software","I don't have the driver/software"],["unsure","I'm not sure"]],content:{
+          wheel:["Connect your wheel and pedals following the product manual.","Install the official driver package for your exact model if required.","Check that the wheel and pedals appear in Windows."],
+          shifter:["Connect the shifter using the method supported by your wheel model.","Install the official driver package for your exact model if required.","Check that steering, pedals and shifter are detected."],
+          pedals:["Connect the pedals using their supported connection method.","Install the official driver or software if required.","Check that Windows detects the pedals."],
+          software:["Find the exact model name of your wheel.","Visit the official Thrustmaster support website and locate its downloads.","Install only the driver package listed for your model and Windows version."],
+          unsure:["Find the model name on the wheel or its label.","Check the product manual for supported pedals and shifters.","Use the official support page to identify the correct software."]
+        },note:"Thrustmaster drivers and firmware vary by model. Check the official support page for your exact device."
+      },
+      fanatec:{
+        label:"Fanatec",options:[["base","Wheel base and pedals"],["shifter","Wheel, pedals and shifter"],["pedals","Separate pedals"],["software","I don't have Fanatec software"],["unsure","I'm not sure"]],content:{
+          base:["Connect the wheel base and pedals according to the product manual.","Install the official Fanatec driver/software package for your model.","Check that the wheel base and pedals are detected."],
+          shifter:["Connect the shifter to the supported port for your wheel base.","Install the official Fanatec driver/software package for your model.","Check that steering, pedals and shifter are detected."],
+          pedals:["Connect the pedals using the method supported by your model.","Install the official driver/software if required.","Check that the pedals are detected by Windows."],
+          software:["Find the exact model of your wheel base and pedals.","Visit the official Fanatec website and locate the correct downloads.","Install the package listed for your model and Windows version."],
+          unsure:["Find the model name of your wheel base.","Check the product manual for compatible pedals and shifters.","Use the official Fanatec support page to identify the right software."]
+        },note:"Use only official Fanatec downloads. Exact steps depend on your wheel base and pedal model."
+      },
+      other:{
+        label:"your wheel",options:[["connected","Wheel and pedals"],["extras","Wheel with extra accessories"],["software","I need the manufacturer's software"],["unsure","I'm not sure"]],content:{
+          connected:["Find the exact model name of your wheel.","Visit the manufacturer's official support website.","Install the driver or software recommended for your model, if required.","Check that Windows detects the wheel and pedals."],
+          extras:["Find the model names of your wheel and accessories.","Check the manuals for the correct connection method.","Install official drivers or software where required.","Check that Windows detects each device."],
+          software:["Identify the manufacturer and exact model.","Download drivers or software only from the manufacturer's official website.","Follow its installation instructions and check device detection."],
+          unsure:["Look for a model name or product number on your wheel.","Check the manufacturer's website for its manual.","You can use this guide again once you know the model."]
+        },note:"Device support has not been confirmed yet. The exact model will be needed before compatibility can be tested."
+      }
+    };
+    const brand=document.querySelector("#brand"),type=document.querySelector("#setupType"),title=document.querySelector("#guideTitle"),steps=document.querySelector("#steps"),note=document.querySelector("#guideNote");
+    function render(){
+      const g=guides[brand.value],previous=type.value;type.innerHTML="";
+      g.options.forEach(([value,label])=>{const o=document.createElement("option");o.value=value;o.textContent=label;type.append(o)});
+      if(g.options.some(o=>o[0]===previous))type.value=previous;
+      const selected=g.options.find(o=>o[0]===type.value),items=g.content[type.value];
+      title.textContent="Your "+g.label+" setup";
+      steps.innerHTML="";items.forEach(item=>{const li=document.createElement("li");li.textContent=item;steps.append(li)});
+      note.textContent=g.note;
+    }
+    brand.addEventListener("change",render);type.addEventListener("change",render);render();
+  </script>
+</body>
+</html>
