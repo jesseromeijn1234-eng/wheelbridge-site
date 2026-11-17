@@ -48,7 +48,14 @@ jobs:
         run: |
           Push-Location installer
           try {
-            & "$env:ProgramFiles(x86)\Inno Setup 6\ISCC.exe" "WheelBridge.iss"
+            $compiler = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+            if (!(Test-Path $compiler)) {
+              $compiler = Join-Path $env:ProgramFiles "Inno Setup 6\ISCC.exe"
+            }
+            if (!(Test-Path $compiler)) {
+              throw "Could not locate ISCC.exe. Checked the standard Inno Setup install folders."
+            }
+            & $compiler "WheelBridge.iss"
             if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed with exit code $LASTEXITCODE" }
           }
           finally {
