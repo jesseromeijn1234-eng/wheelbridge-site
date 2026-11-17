@@ -15,9 +15,16 @@ The installer is self-contained: the .NET runtime is included, so the end user d
 
 ## Current app status
 
-This build is an interface preview only. The sliders in the Input Lab are simulated. It does not yet:
-- Detect or read a physical racing wheel.
-- Read steering, throttle, brake, clutch, paddles, buttons or an H-shifter.
+Version 0.2.0 adds:
+- DirectInput discovery of connected game controllers.
+- Live polling of raw joystick axes (X, Y, Z, Rotation X/Y/Z).
+- Live display of additional slider values and the number of pressed buttons.
+- A selectable controller list and a manual rescan button.
+
+The input monitor shows raw DirectInput values. Axis names and ranges depend on the wheel and its driver, so this build does not automatically identify which axis is steering, throttle, brake or clutch yet.
+
+It does not yet:
+- Map wheel axes to steering, throttle, brake, clutch, paddles or an H-shifter.
 - Create a virtual controller.
 - Connect to Roblox.
 - Send force feedback to a physical wheel.
